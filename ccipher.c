@@ -32,17 +32,25 @@ void encrypt()
 
     // clears previous user input and prompts user for word
     memset(inpt, 0, strlen(inpt));
+    memset(wrd, 0, strlen(wrd));
     printf(">Enter word: ");
     scanf("%s", inpt);
 
     // iterates through input, alpha, and beta character arrays
-    for (int c = 0; alpha[c] != '\0'; c++)
+    for (int c = 0; alpha[c] != '\0' && c <= strlen(inpt); c++)
     {
-        for (int j = 0; beta[j] != '\0'; j++)
+        for (int j = 0; beta[j] != '\0' && j <= strlen(inpt); j++)
         {
-            for (int v = 0; inpt[v] != '\0'; v++)
+            for (int v = 0; inpt[v] != '\0' && v <= strlen(inpt); v++)
             {
-                if (alpha[c] == inpt[v])
+                
+                if (inpt[v] == '\\' && inpt[v] == '0')
+                {
+                    break;
+                }
+                
+                
+                else if (alpha[c] == inpt[v])
                 {
                     // adds corresponding letter to wrd starting from index 0
                     wrd[x] = beta[c];
@@ -52,17 +60,13 @@ void encrypt()
                 else
                 {
                     break;
-                }
-                
-                
+                }           
                 
             }
         }
     }
 
-    // prints encrypted word
     printf("%s\n", wrd);
-
 }
 
 
