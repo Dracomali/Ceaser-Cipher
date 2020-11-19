@@ -28,6 +28,7 @@ void encrypt()
 {
     //initializes empty character array the will become new word
     char wrd[255];
+    int x = 0;
 
     // clears previous user input and prompts user for word
     memset(inpt, 0, strlen(inpt));
@@ -41,20 +42,26 @@ void encrypt()
         {
             for (int v = 0; inpt[v] != '\0'; v++)
             {
-                if (strcmp(inpt[v], alpha[c]) ==  0)
+                if (alpha[c] == inpt[v])
                 {
-                    printf("%c", beta[j]);
+                    // adds corresponding letter to wrd starting from index 0
+                    wrd[x] = beta[c];
+                    x++;
                 }
 
                 else
                 {
-                    printf("ERROR");
+                    break;
                 }
+                
+                
                 
             }
         }
     }
 
+    // prints encrypted word
+    printf("%s\n", wrd);
 
 }
 
