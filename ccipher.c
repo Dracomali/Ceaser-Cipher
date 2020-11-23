@@ -37,32 +37,18 @@ void encrypt()
     scanf("%s", inpt);
 
     // iterates through input, alpha, and beta character arrays
-    for (int c = 0; alpha[c] != '\0' && c <= strlen(inpt); c++)
+    for (int v = 0; inpt[v] != '\0' && v <= strlen(inpt); v++)
     {
-        for (int j = 0; beta[j] != '\0' && j <= strlen(inpt); j++)
+        for (int c = 0; alpha[c] != '\0'; c++)
         {
-            for (int v = 0; inpt[v] != '\0' && v <= strlen(inpt); v++)
+                
+            if (alpha[c] == inpt[v])
             {
+                // adds corresponding letter to wrd starting from index 0
+                wrd[x] = beta[c];
+                x++;
+            }      
                 
-                if (inpt[v] == '\\' && inpt[v] == '0')
-                {
-                    break;
-                }
-                
-                
-                else if (alpha[c] == inpt[v])
-                {
-                    // adds corresponding letter to wrd starting from index 0
-                    wrd[x] = beta[c];
-                    x++;
-                }
-
-                else
-                {
-                    break;
-                }           
-                
-            }
         }
     }
 
@@ -102,3 +88,4 @@ int main(void)
 
     return 0;
 }
+
