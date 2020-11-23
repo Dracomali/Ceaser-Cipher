@@ -18,9 +18,10 @@ void help()
     printf("***         ALL OF THE COMMANDS    ***\n");
     printf("encrypt    -e                encyrpts typed data\n");
     printf("decrypt    -d                decrypts typed data\n");
+    printf("exit        exit             exits the program");
     printf("help       -h                displays help menu\n\n");
     printf("Examples:\n");
-    printf("         >: -e\n");
+    printf("         >: ccipher-e\n");
 }
 
 // encrypts data
@@ -55,6 +56,37 @@ void encrypt()
     printf("%s\n", wrd);
 }
 
+// decrypts data
+void decrypt()
+{
+    char wrd[255];
+    int x = 0;
+
+    // clears previous user input and prompts user for word
+    memset(inpt, 0, strlen(inpt));
+    memset(wrd, 0, strlen(wrd));
+    printf(">Enter word: ");
+    scanf("%s", inpt);
+
+     for (int v = 0; inpt[v] != '\0' && v <= strlen(inpt); v++)
+    {
+        for (int c = 0; beta[c] != '\0'; c++)
+        {
+     
+            if (beta[c] == inpt[v])
+            {
+                // adds corresponding letter to wrd starting from index 0
+                wrd[x] = alpha[c];
+                x++;
+            }
+        }
+    }
+
+
+    printf("%s\n", wrd);
+
+}
+
 
 int main(void)
 { 
@@ -68,15 +100,18 @@ int main(void)
         printf(">:");
         scanf("%s", inpt);
 
-        if (strcmp(inpt, "-e") == 0)
+        if (strcmp(inpt, "ccipher-e") == 0)
         {
             encrypt();
-            break;
         }
 
-        else if (strcmp(inpt, "-d") == 0)
+        else if (strcmp(inpt, "ccipher-d") == 0)
         {
-            printf("decrypt\n");
+            decrypt();
+        }
+
+        else if (strcmp(inpt, "exit") == 0)
+        {
             break;
         }
 
